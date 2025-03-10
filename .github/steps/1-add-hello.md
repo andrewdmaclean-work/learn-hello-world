@@ -7,15 +7,11 @@
   TBD-step-1-notes.
 -->
 
-## Step 1: TBD-step-1-name
+## Step 1: Say Hello
 
-_Welcome to "TBD-course-name"! :wave:_
+_Welcome to "Say Hello World"! :wave:_
 
-TBD-step-1-information
-
-**What is _TBD-term-1_**: TBD-definition-1
-
-### :keyboard: Activity: TBD-step-1-name
+### :keyboard: Activity: Add Hello
 
 1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
 2. Create a new branch called "add-hello"
