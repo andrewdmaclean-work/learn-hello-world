@@ -5,11 +5,14 @@
 
 ## Finish
 
-_Congratulations friend, you've completed this course!_
+_Congratulations $NAME, you've successfully this course!_
 
+$MESSAGE
+
+<!--
 <img src=TBD-celebrate-image alt=celebrate width=300 align=right>
 
-Here's a recap of all the tasks you've accomplished in your repository:
+ Here's a recap of all the tasks you've accomplished in your repository: 
 
 - TBD-recap.
 
@@ -20,3 +23,4 @@ Here's a recap of all the tasks you've accomplished in your repository:
 - [Take another TBD-organization Course](https://github.com/TBD-organization).
 - [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
+-->
