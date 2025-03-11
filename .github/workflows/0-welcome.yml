@@ -63,4 +63,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           from_step: 0
           to_step: 1
-          branch_name: tbd-branch-name
+          branch_name: add-hello
+          base_branch_name: main
