@@ -7,11 +7,11 @@
   TBD-step-1-notes.
 -->
 
-## Step 1: Say Hello
+## Step 1: Say World
 
 _Welcome to "Say Hello World"! :wave:_
 
-### :keyboard: Activity: Add Hello
+### :keyboard: Activity: Add World
 
 1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
 2. Create a new branch called "add-world"
