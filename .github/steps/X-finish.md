@@ -5,9 +5,9 @@
 
 ## You Did It!
 
-_Congratulations $NAME, you've successfully this course!_
+_Congratulations X-NAME, you've successfully this course!_
 
-$MESSAGE
+X-MESSAGE
 
 <!--
 <img src=TBD-celebrate-image alt=celebrate width=300 align=right>
