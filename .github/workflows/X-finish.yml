@@ -1,13 +1,13 @@
 name: Initiating Completion Process...
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     types: [closed]
     branches:
       - main
+  push:
+    branches:
+      - add-world
 
 permissions: write-all
 
