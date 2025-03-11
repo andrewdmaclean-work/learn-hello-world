@@ -64,14 +64,39 @@ jobs:
     needs: evaluate-assessment
     if: needs.check-solution.outputs.assessment == 'correct'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Update to step 2
+      - name: Prepare a pull request, branch, and file
+        run: |
+          echo "Make sure we are on step 1"
+          if [ "$(cat .github/steps/-step.txt)" != 1 ]
+          then
+            echo "Current step is not 1"
+            exit 0
+          fi
+
+          echo "Make a branch"
+          BRANCH=add-world
+          git checkout -b $BRANCH
+
+          echo "Make a commit"
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add index.md
+          git commit --message="Create add-world branch"
+
+          echo "Push"
+          git push --set-upstream origin $BRANCH
+
+          echo "Restore main"
+          git checkout main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # In README.md, switch step 0 for step 1.
+      - name: Update to step 1
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 2
-          to_step: X
-          branch_name: main
+          from_step: 0
+          to_step: 1
+          branch_name: add-world
+          base_branch_name: main 
