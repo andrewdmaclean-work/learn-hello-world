@@ -12,12 +12,10 @@
 _Welcome to "Say Hello World"! :wave:_
 
 ### :keyboard: Activity: Add World
-
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-2. Create a new branch called "add-world"
-3. Open your "hello-world.md" file
-3. Add the word `World` in your favorite language to the branch.
-4. Push your changes to the new branch.
-5. Wait for the GitHub action to run.
+1. Open a new browser tab for these instructions.
+2. Create a branch named add-world.
+3. Open your file called hello-world.md and add 'World' in your favorite language.
+4. Push the changes to add-world.
+5. Let the GitHub Action run.
 6. Review comments.
-6. If successful merge the PR and refresh the instructions page.
+7. If successful, merge the pull request and refresh this page.
