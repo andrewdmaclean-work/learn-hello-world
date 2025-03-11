@@ -3,7 +3,7 @@
   Review what we learned, ask for feedback, provide next steps.
 -->
 
-## Finish
+## You Did It!
 
 _Congratulations $NAME, you've successfully this course!_
 
