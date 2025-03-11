@@ -64,14 +64,42 @@ jobs:
     needs: evaluate-assessment
     if: needs.check-solution.outputs.assessment == 'correct'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Update to step 2
+      - name: Prepare a pull request, branch, and file
+        run: |
+          echo "Make sure we are on step 0"
+          if [ "$(cat .github/steps/-step.txt)" != 0 ]
+          then
+            echo "Current step is not 0"
+            exit 0
+          fi
+
+          echo "Make a branch"
+          BRANCH=add-hello
+          git checkout -b $BRANCH
+
+          echo "Make a file"
+          touch hello-world.md
+
+          echo "Make a commit"
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add index.md
+          git commit --message="Create hello-world.md file"
+
+          echo "Push"
+          git push --set-upstream origin $BRANCH
+
+          echo "Restore main"
+          git checkout main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # In README.md, switch step 0 for step 1.
+      - name: Update to step 1
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 1
-          to_step: 2
-          branch_name: main
+          from_step: 0
+          to_step: 1
+          branch_name: add-hello
+          base_branch_name: main 
