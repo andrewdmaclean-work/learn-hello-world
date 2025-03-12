@@ -21,17 +21,18 @@ _Say Hello World in Your Language._
 
 ## Welcome
 
-XXXX
+Learn to write a simple program that greets the world in any language of your choice!
 
-- **Who is this for**: XXXX.
-- **What you'll learn**: XXXX.
-- **What you'll build**: XXX.
-- **Prerequisites**: In this course you willXXXX. If these things aren't familiar to you, we recommend you XXX, first!
-- **How long**: This course takes XXX to complete.
+- **Who is this for**: Beginners who want to learn programming basics.
+- **What you'll learn**: The fundamentals of writing and running a simple program.
+- **What you'll build**: A "Hello World" program in the language of your choice.
+- **Prerequisites**: In this course you will learn the very basics. If these things aren't familiar to you, we recommend exploring introductory programming resources first!
+- **How long**: This course takes approximately 30 minutes to complete.
 
 In this course, you will:
 
-1. XXX
+1. Set up your development environment.
+2. Write a "Hello World" program.
 
 ### How to start this course
 
@@ -46,7 +47,7 @@ In this course, you will:
 }).toString()
 -->
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=andrewdmaclean-work&template_name=skill-hello-world&owner=%40me&name=course-hello-world&description=My+clone+repository&visibility=public)
+[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=andrewdmaclean-work&template_name=build-hello-world&owner=%40me&name=build-hello-world&description=My+clone+repository&visibility=public)
 
 1. Right-click **Start course** and open the link in a new tab.
 2. In the new tab, most of the prompts will automatically fill in for you.
@@ -64,6 +65,9 @@ In this course, you will:
 
 ---
 
-
+For more support, visit our [support page](#).  
+Check the [GitHub status page](https://www.githubstatus.com/).  
+View our [Code of Conduct](#).  
+This project is licensed under the [MIT License](#).
 
 </footer>
