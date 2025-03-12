@@ -66,25 +66,22 @@ jobs:
     steps:
       - name: Prepare a pull request, branch, and file
         run: |
-          echo "Make sure we are on step 0"
-          if [ "$(cat .github/steps/-step.txt)" != 0 ]
+          echo "Make sure we are on step 1"
+          if [ "$(cat .github/steps/-step.txt)" != 1 ]
           then
-            echo "Current step is not 0"
+            echo "Current step is not 1"
             exit 0
           fi
 
           echo "Make a branch"
-          BRANCH=add-hello
+          BRANCH=add-world
           git checkout -b $BRANCH
-
-          echo "Make a file"
-          touch hello-world.md
 
           echo "Make a commit"
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git add index.md
-          git commit --message="Create hello-world.md file"
+          git commit --message="Create world branch"
 
           echo "Push"
           git push --set-upstream origin $BRANCH
@@ -99,7 +96,7 @@ jobs:
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 0
-          to_step: 1
-          branch_name: add-hello
+          from_step: 1
+          to_step: 2
+          branch_name: add-world
           base_branch_name: main 
