@@ -63,6 +63,11 @@ jobs:
     needs: evaluate-assessment
     if: needs.check-solution.outputs.assessment == 'correct'
     steps:
+          # We'll need to check out the repository so that we can edit the README.
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Let's get all the branches.
       - name: Ensure we are on Step 2
         run: |
           echo "Make sure we are on step 2"
