@@ -86,4 +86,3 @@ jobs:
           from_step: 0
           to_step: 1
           branch_name: add-hello
-          base_branch_name: main 

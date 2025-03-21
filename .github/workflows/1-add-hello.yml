@@ -96,4 +96,3 @@ jobs:
           from_step: 1
           to_step: 2
           branch_name: add-world
-          base_branch_name: main 

@@ -80,4 +80,3 @@ jobs:
           from_step: 2
           to_step: X
           branch_name: add-world
-          base_branch_name: main 
