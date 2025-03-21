@@ -29,8 +29,7 @@ jobs:
           step: ".github/steps/1-add-hello.md"
           submission: "hello-world.md"
           solution: ".github/solutions/1-solution-prompt.md"
-          webhook: ${{ vars.WEBHOOK_URL }}
-          user: ${{ github.actor }}
+          # user: ${{ github.actor }}
   handle-results:
     name: Leaving Comments for User...
     runs-on: ubuntu-latest
