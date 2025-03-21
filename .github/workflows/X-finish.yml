@@ -23,16 +23,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Check Solution
-        id: check
-        uses: andrewdmaclean-work/action-check-file@main
-        with:
-          step: ".github/steps/2-add-world.md"
-          submission: "hello-world.md"
-          solution: ".github/solutions/2-solution-prompt.md"
-          webhook: ${{ vars.WEBHOOK_URL }}
-          accountsid: ${{ vars.ACCOUNT_SID }}
-          authtoken: ${{ secrets.AUTH_TOKEN }}
 
   get_current_step:
     name: Check current step number

@@ -24,21 +24,20 @@ jobs:
           fetch-depth: 0
       - name: Check Solution
         id: check
-        uses: andrewdmaclean-work/action-check-file@main
+        uses: andrewdmaclean-work/learn-action-check-file@main
         with:
           step: ".github/steps/1-add-hello.md"
           submission: "hello-world.md"
           solution: ".github/solutions/1-solution-prompt.md"
           webhook: ${{ vars.WEBHOOK_URL }}
-          accountsid: ${{ vars.ACCOUNT_SID }}
-          authtoken: ${{ secrets.AUTH_TOKEN }}
+          user: ${{ github.actor }}
   handle-results:
     name: Leaving Comments for User...
     runs-on: ubuntu-latest
     needs: check-solution
     steps:
       - name: Handle Solution Result
-        uses: andrewdmaclean-work/action-comment-and-merge@main
+        uses: andrewdmaclean-work/learn-action-comment-and-merge@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
@@ -80,9 +79,7 @@ jobs:
           echo "Make a commit"
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git add index.md
           git commit --message="Create world branch"
-
           echo "Push"
           git push --set-upstream origin $BRANCH
 

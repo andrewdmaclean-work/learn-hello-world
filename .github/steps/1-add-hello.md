@@ -11,13 +11,11 @@
 _Welcome to "Say Hello World"! :wave:_
 
 ### Before You Begin
-Set up your Twilio credentials:
+Set the AI Assistant Webhook URL:
 
-1. Obtain your AUTH_TOKEN and ACCOUNT_SID from Twilio.
-2. Go to Settings > Security > Secrets and Variables > Actions in this Repository.
-3. Add a secret named AUTH_TOKEN.
-4. Add variables named ACCOUNT_SID and WEBHOOK_URL.
-5. Set WEBHOOK_URL to https://example.com/webhook.
+1. Go to Settings > Security > Secrets and Variables > Actions in this Repository.
+2. Add a variables named WEBHOOK_URL.
+3. Set WEBHOOK_URL to https://example.com/webhook.
 
 ### :keyboard: Activity: Add Hello
 1. Open a new browser tab for these instructions.

@@ -67,7 +67,7 @@ jobs:
           echo "Make a commit"
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git add index.md
+          git add hello-world.md
           git commit --message="Create hello-world.md file"
 
           echo "Push"
@@ -85,5 +85,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           from_step: 0
           to_step: 1
-          branch_name: add-world
+          branch_name: add-hello
           base_branch_name: main 
