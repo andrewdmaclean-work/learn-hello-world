@@ -29,14 +29,13 @@ jobs:
           step: ".github/steps/2-add-world.md"
           submission: "hello-world.md"
           solution: ".github/solutions/2-solution-prompt.md"
-          # user: ${{ github.actor }}
   handle-results:
     name: Leaving Comments for User...
     runs-on: ubuntu-latest
     needs: check-solution
     steps:
       - name: Handle Solution Result
-        uses: andrewdmaclean-work/learn-action-comment-and-merge@main
+        uses: andrewdmaclean-work/learn-action-ai-assistant-comments@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
