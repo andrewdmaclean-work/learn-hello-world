@@ -1,4 +1,4 @@
-name: Initiating Assessment Process...
+name: Step 1, Assessment
 
 on:
   pull_request:
@@ -96,11 +96,9 @@ jobs:
           echo "Switching back to main..."
           git checkout main
 
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # In README.md, switch step 0 for step 1.
       - name: Update to step 1
         uses: skills/action-update-step@v2
         with:

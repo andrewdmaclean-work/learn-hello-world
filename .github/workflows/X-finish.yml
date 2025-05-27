@@ -1,4 +1,4 @@
-name: Initiating Completion Process...
+name: Step 3, Completion
 
 on:
   pull_request:
@@ -51,7 +51,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Let's get all the branches.
+          fetch-depth: 0
       - name: Update README
         run: |
             NAME="${{ github.actor }}"
