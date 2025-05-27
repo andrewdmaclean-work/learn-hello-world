@@ -1,69 +1,46 @@
-name: Step 3, Completion
+name: Step X, Completion
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - main
   push:
-    branches:
-      - add-world
+    branches: [main]
+  workflow_dispatch:
 
 permissions: write-all
 
 jobs:
-  check-solution:
-    name: Checking User Submission...
+  finish:
     runs-on: ubuntu-latest
-    outputs:
-      assessment: ${{ steps.check.outputs.assessment }}
-      reason: ${{ steps.check.outputs.reason }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-  get_current_step:
-    name: Check current step number
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - id: get_step
-        run: |
-          echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
-    outputs:
-      current_step: ${{ steps.get_step.outputs.current_step }}
-
-  update-readme:
-    name: Update Readme
-    needs: 
-      - get_current_step 
-      - check-solution
-    if: >-
-      ${{ !github.event.repository.is_template
-          && needs.get_current_step.outputs.current_step == 'X' }}
-
-    runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Update README
+
+      - name: Read current step
+        id: get_step
         run: |
-            NAME="${{ github.actor }}"
-            sed -i "s/\X-NAME/$NAME/g" README.md
-            sed -i "s/\X-MESSAGE/${{ needs.check-solution.outputs.reason }}/g" README.md
+          current_step=$(cat .github/steps/-step.txt)
+          echo "current_step=$current_step" >> $GITHUB_OUTPUT
+
+      - name: Exit unless step X
+        if: steps.get_step.outputs.current_step != 'X'
+        run: |
+          echo "Current step is not X (found ${steps.get_step.outputs.current_step}), exiting."
+          exit 0
+
+      - name: Update README for Step X Completion
+        if: steps.get_step.outputs.current_step == 'X'
+        run: |
+          NAME="${{ github.actor }}"
+          sed -i "s/X-NAME/$NAME/g" README.md
+          # Put your X-MESSAGE update here if desired (or just hardcode it)
+          sed -i "s/X-MESSAGE/Congratulations on finishing step X!/g" README.md
+
       - name: Commit changes
+        if: steps.get_step.outputs.current_step == 'X'
         run: |
-            git config --local user.name "github-actions[bot]"
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git add README.md
-            git commit -m "Update README with new information"
-            git push
-
-
-  
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update README to celebrate Step X"
+          git push

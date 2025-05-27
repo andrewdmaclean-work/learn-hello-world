@@ -1,9 +1,6 @@
 name: Step 1, Assessment
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - add-hello
