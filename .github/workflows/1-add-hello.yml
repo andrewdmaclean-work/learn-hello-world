@@ -1,24 +1,23 @@
 name: Step 1, Assessment
 
 on:
-  push:
+  pull_request:
     branches:
-      - add-hello
+      - main
 
 permissions: write-all
 
 jobs:
-  check-solution:
-    name: Checking User Submission...
+  main:
+    name: Step 1 - Assessment
     runs-on: ubuntu-latest
-    outputs:
-      assessment: ${{ steps.check.outputs.assessment }}
-      reason: ${{ steps.check.outputs.reason }}
+    if: github.head_ref == 'hello-world'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Check Solution
         id: check
         uses: andrewdmaclean-work/learn-action-check-file@main
@@ -26,44 +25,27 @@ jobs:
           step: ".github/steps/1-add-hello.md"
           submission: "hello-world.md"
           solution: ".github/solutions/1-solution-prompt.md"
-  handle-results:
-    name: Leaving Comments for User...
-    runs-on: ubuntu-latest
-    needs: check-solution
-    steps:
+
       - name: Handle Solution Result
         uses: andrewdmaclean-work/learn-action-ai-assistant-comments@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
-          assessment: ${{ needs.check-solution.outputs.assessment }}
-          reason: ${{ needs.check-solution.outputs.reason }}
-  evaluate-assessment:
-    name: Checking if Ready to Progress...
-    runs-on: ubuntu-latest
-    needs: check-solution
-    steps:
+          assessment: ${{ steps.check.outputs.assessment }}
+          reason: ${{ steps.check.outputs.reason }}
+
       - name: Check Assessment
-        if: needs.check-solution.outputs.assessment == 'correct'
+        if: steps.check.outputs.assessment == 'correct'
         run: echo "Your submission is correct. Continue to the next step."
 
       - name: Fail Assessment
-        if: needs.check-solution.outputs.assessment != 'correct'
+        if: steps.check.outputs.assessment != 'correct'
         run: |
           echo "Your submission is missing something. Please review the comments."
           exit 1
-  update-step:
-    name: Updating Instructions...
-    runs-on: ubuntu-latest
-    needs: evaluate-assessment
-    if: needs.check-solution.outputs.assessment == 'correct'
-    steps:
-      # We'll need to check out the repository so that we can edit the README.
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Let's get all the branches.
+
       - name: Merge current PR and create new branch
+        if: steps.check.outputs.assessment == 'correct'
         run: |
           echo "Checking current step..."
           if [ "$(cat .github/steps/-step.txt)" != 1 ]
@@ -92,11 +74,11 @@ jobs:
 
           echo "Switching back to main..."
           git checkout main
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update to step 1
+        if: steps.check.outputs.assessment == 'correct'
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
