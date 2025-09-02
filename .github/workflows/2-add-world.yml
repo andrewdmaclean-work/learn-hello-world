@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Check Solution
@@ -40,7 +40,7 @@ jobs:
           exit 1
       - name: Checkout AGAIN (if needed)
         if: steps.check.outputs.assessment == 'correct'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Merge current PR
